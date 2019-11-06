@@ -13,58 +13,58 @@ public class DepartmentDO {
 
 
    public String getSpaceId() {
-      return a.e;
+      return e;
    }
 
    public String getName() {
-      return a.F;
+      return F;
    }
 
    public void setParentId(String a1) {
-      a.L = a1;
+      L = a1;
    }
 
    public String getId() {
-      return a.m;
+      return m;
    }
 
    public void setCode(String a1) {
-      a.d = a1;
+      d = a1;
    }
 
    public String getParentId() {
-      return a.L;
+      return L;
    }
 
    public void setSeq(Integer a1) {
-      a.ALLATORIxDEMO = a1;
+      ALLATORIxDEMO = a1;
    }
 
    public Integer getLeaf() {
-      return a.g;
+      return g;
    }
 
    public void setLeaf(Integer a1) {
-      a.g = a1;
+      g = a1;
    }
 
    public Integer getSeq() {
-      return a.ALLATORIxDEMO;
+      return ALLATORIxDEMO;
    }
 
    public void setName(String a1) {
-      a.F = a1;
+      F = a1;
    }
 
    public String getCode() {
-      return a.d;
+      return d;
    }
 
    public void setSpaceId(String a1) {
-      a.e = a1;
+      e = a1;
    }
 
    public void setId(String a1) {
-      a.m = a1;
+      m = a1;
    }
 }

@@ -17,90 +17,90 @@ public class MenuVO {
 
 
    public String getCode() {
-      return a.g;
+      return g;
    }
 
    public void setChannel(Integer a1) {
-      a.F = a1;
+      F = a1;
    }
 
    public boolean isShowFlag() {
-      return a.K;
+      return K;
    }
 
    public void setName(String a1) {
-      a.J = a1;
+      J = a1;
    }
 
    public void setIcon(String a1) {
-      a.m = a1;
+      m = a1;
    }
 
    public void setId(Long a1) {
-      a.d = a1;
+      d = a1;
    }
 
    public void setSeq(Integer a1) {
-      a.e = a1;
+      e = a1;
    }
 
    public Integer getSeq() {
-      return a.e;
+      return e;
    }
 
    public Long getParentId() {
-      return a.L;
+      return L;
    }
 
    public String getName() {
-      return a.J;
+      return J;
    }
 
    public void setState(String a1) {
-      a.E = a1;
+      E = a1;
    }
 
    public void setParentId(Long a1) {
-      a.L = a1;
+      L = a1;
    }
 
    public String getIcon() {
-      return a.m;
+      return m;
    }
 
    public Integer getChannel() {
-      return a.F;
+      return F;
    }
 
    public void setCode(String a1) {
-      a.g = a1;
+      g = a1;
    }
 
    public void setUrl(String a1) {
-      a.ALLATORIxDEMO = a1;
+      ALLATORIxDEMO = a1;
    }
 
    public boolean isLeaf() {
-      return a.C;
+      return C;
    }
 
    public void setLeaf(boolean a1) {
-      a.C = a1;
+      C = a1;
    }
 
    public String getState() {
-      return a.E;
+      return E;
    }
 
    public void setShowFlag(boolean a1) {
-      a.K = a1;
+      K = a1;
    }
 
    public String getUrl() {
-      return a.ALLATORIxDEMO;
+      return ALLATORIxDEMO;
    }
 
    public Long getId() {
-      return a.d;
+      return d;
    }
 }

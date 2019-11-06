@@ -13,58 +13,58 @@ public class RoleDO {
 
 
    public String getSpaceId() {
-      return a.m;
+      return m;
    }
 
    public void setName(String a1) {
-      a.F = a1 == null?null:a1.trim();
+      F = a1 == null?null:a1.trim();
    }
 
    public void setId(String a1) {
-      a.e = a1;
+      e = a1;
    }
 
    public Integer getType() {
-      return a.ALLATORIxDEMO;
+      return ALLATORIxDEMO;
    }
 
    public String getDeptId() {
-      return a.L;
+      return L;
    }
 
    public void setDeptId(String a1) {
-      a.L = a1;
+      L = a1;
    }
 
    public void setType(Integer a1) {
-      a.ALLATORIxDEMO = a1;
+      ALLATORIxDEMO = a1;
    }
 
    public void setRemark(String a1) {
-      a.d = a1 == null?null:a1.trim();
+      d = a1 == null?null:a1.trim();
    }
 
    public void setChannel(Integer a1) {
-      a.g = a1;
+      g = a1;
    }
 
    public void setSpaceId(String a1) {
-      a.m = a1;
+      m = a1;
    }
 
    public String getId() {
-      return a.e;
+      return e;
    }
 
    public String getName() {
-      return a.F;
+      return F;
    }
 
    public String getRemark() {
-      return a.d;
+      return d;
    }
 
    public Integer getChannel() {
-      return a.g;
+      return g;
    }
 }

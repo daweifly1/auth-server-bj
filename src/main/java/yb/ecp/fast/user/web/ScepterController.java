@@ -1,15 +1,8 @@
 package yb.ecp.fast.user.web;
 
 import io.swagger.annotations.ApiOperation;
-import java.util.ArrayList;
-import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import yb.ecp.fast.infra.annotation.FastMappingInfo;
 import yb.ecp.fast.infra.infra.ActionResult;
 import yb.ecp.fast.infra.util.ListUtil;
@@ -17,30 +10,29 @@ import yb.ecp.fast.infra.util.Ref;
 import yb.ecp.fast.infra.util.StringUtil;
 import yb.ecp.fast.user.infra.BasicController;
 import yb.ecp.fast.user.infra.ErrorCode;
-import yb.ecp.fast.user.service.MenuService;
-import yb.ecp.fast.user.service.ProfileService;
-import yb.ecp.fast.user.service.RoleService;
-import yb.ecp.fast.user.service.ScepterService;
-import yb.ecp.fast.user.service.UserContextService;
+import yb.ecp.fast.user.service.*;
 import yb.ecp.fast.user.service.VO.RoleMenuVO;
 import yb.ecp.fast.user.service.VO.RoleUserVO;
 import yb.ecp.fast.user.service.VO.RoleVO;
 import yb.ecp.fast.user.service.VO.UserRoleRelationVO;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 @RequestMapping({"/scepter"})
 public class ScepterController extends BasicController {
 
    @Autowired
-   MenuService g;
+   MenuService menuService;
    @Autowired
-   RoleService d;
+   RoleService roleService;
    @Autowired
-   UserContextService L;
+   UserContextService userContextService;
    @Autowired
-   ScepterService e;
+   ScepterService scepterService;
    @Autowired
-   ProfileService ALLATORIxDEMO;
+   ProfileService profileService;
 
 
    @RequestMapping(
@@ -52,7 +44,7 @@ public class ScepterController extends BasicController {
       needLogin = true
    )
    public ActionResult roleUser(@RequestBody UserRoleRelationVO userRoleVO) {
-      return this.actionResult(this.e.setRoleUser(userRoleVO.getRoleId(), userRoleVO.getUserId(), 0));
+      return this.actionResult(this.scepterService.setRoleUser(userRoleVO.getRoleId(), userRoleVO.getUserId(), 0));
    }
 
    @RequestMapping(
@@ -67,7 +59,7 @@ public class ScepterController extends BasicController {
          value = "userId",
          required = false
       ) String userId, @RequestHeader("x-user-id") String selfUserId) {
-      return StringUtil.isNullOrSpace(userId)?this.actionResult(this.e.authCodesByUserId(selfUserId)):this.actionResult(this.e.authCodesByUserId(userId));
+      return StringUtil.isNullOrSpace(userId) ? this.actionResult(this.scepterService.authCodesByUserId(selfUserId)) : this.actionResult(this.scepterService.authCodesByUserId(userId));
    }
 
    @RequestMapping(
@@ -78,7 +70,7 @@ public class ScepterController extends BasicController {
       needLogin = true
    )
    public ActionResult userRoles(@RequestHeader("x-user-id") String userId) {
-      return this.actionResult(this.e.getRoleIdsByUserId(userId));
+      return this.actionResult(this.scepterService.getRoleIdsByUserId(userId));
    }
 
    @RequestMapping(
@@ -90,7 +82,7 @@ public class ScepterController extends BasicController {
       needLogin = true
    )
    public ActionResult allRoles() {
-      return this.actionResult(this.e.getAllRoles(0, (Integer)null, (String)null));
+      return this.actionResult(this.scepterService.getAllRoles(0, (Integer) null, (String) null));
    }
 
    @RequestMapping(
@@ -100,7 +92,7 @@ public class ScepterController extends BasicController {
    @ApiOperation("批量删除角色")
    public ActionResult removeRoles(@RequestBody List roleIds) {
       List a;
-      return !ListUtil.isNullOrEmpty(a = this.e.checkRolesUsed(roleIds))?this.actionResult(ErrorCode.RoleIsUsed, a):(!ListUtil.isNullOrEmpty(a = this.e.deleteRoles(roleIds))?this.actionResult(ErrorCode.FailedToRemoveRecord, a):this.actionResult(ErrorCode.Success));
+      return !ListUtil.isNullOrEmpty(a = this.scepterService.checkRolesUsed(roleIds)) ? this.actionResult(ErrorCode.RoleIsUsed, a) : (!ListUtil.isNullOrEmpty(a = this.scepterService.deleteRoles(roleIds)) ? this.actionResult(ErrorCode.FailedToRemoveRecord, a) : this.actionResult(ErrorCode.Success));
    }
 
    @RequestMapping(
@@ -112,8 +104,8 @@ public class ScepterController extends BasicController {
       needLogin = true
    )
    public ActionResult queryRolesByDepartment(@RequestParam("deptId") String deptId, @RequestHeader("x-user-id") String userId) {
-      Ref a = new Ref(new ArrayList());
-      return this.actionResult(this.e.queryRolesByDepartment(deptId, userId, a), a.get());
+      Ref ref = new Ref(new ArrayList());
+      return this.actionResult(this.scepterService.queryRolesByDepartment(deptId, userId, ref), ref.get());
    }
 
    @RequestMapping(
@@ -125,7 +117,7 @@ public class ScepterController extends BasicController {
       code = 1414L
    )
    public ActionResult addMenu(@RequestBody RoleMenuVO roleMenuVO) {
-      return this.actionResult(this.e.addMenu(roleMenuVO));
+      return this.actionResult(this.scepterService.addMenu(roleMenuVO));
    }
 
    @RequestMapping(
@@ -136,7 +128,7 @@ public class ScepterController extends BasicController {
       needLogin = true
    )
    public ActionResult getMenusAuths(@RequestHeader("x-user-id") String userId, @RequestParam("roleId") String roleId) {
-      return this.actionResult(this.e.listMenuAuthByRoleId(roleId, userId));
+      return this.actionResult(this.scepterService.listMenuAuthByRoleId(roleId, userId));
    }
 
    @RequestMapping(
@@ -148,7 +140,7 @@ public class ScepterController extends BasicController {
       needLogin = true
    )
    public ActionResult roleUserIds(@RequestParam("roleId") String roleId) throws Exception {
-      return this.actionResult(this.e.getUserIdByRoleId(roleId));
+      return this.actionResult(this.scepterService.getUserIdByRoleId(roleId));
    }
 
    @RequestMapping(
@@ -164,19 +156,19 @@ public class ScepterController extends BasicController {
       needLogin = true
    )
    public ActionResult roles(@RequestHeader("x-user-id") String userId) {
-      Ref a = new Ref("");
-      ErrorCode a1 = this.ALLATORIxDEMO.queryWorkspaceId(userId, a);
+      Ref ref = new Ref("");
+      ErrorCode a1 = this.profileService.queryWorkspaceId(userId, ref);
       if(ErrorCode.Success != a1) {
          return this.actionResult(a1);
       } else {
-         String a2 = (String)a.get();
+         String a2 = (String) ref.get();
          return this.ALLATORIxDEMO(0, (Integer)null, a2);
       }
    }
 
    // $FF: synthetic method
    private ActionResult ALLATORIxDEMO(int a1, Integer a2, String a3) {
-      return a.actionResult(a.e.getAllRoles(a1, a2, a3));
+      return new ActionResult(scepterService.getAllRoles(a1, a2, a3));
    }
 
    @RequestMapping(
@@ -188,7 +180,7 @@ public class ScepterController extends BasicController {
       needLogin = true
    )
    public ActionResult removeRoleUser(@RequestBody UserRoleRelationVO userRoleVO) {
-      return this.actionResult(this.e.removeRoleUser(userRoleVO.getRoleId(), userRoleVO.getUserId()));
+      return this.actionResult(this.scepterService.removeRoleUser(userRoleVO.getRoleId(), userRoleVO.getUserId()));
    }
 
    @RequestMapping(
@@ -199,7 +191,7 @@ public class ScepterController extends BasicController {
       needLogin = true
    )
    public ActionResult getMenu(@RequestHeader("x-user-id") String userId, @RequestParam("roleId") String roleId) {
-      return this.actionResult(this.e.listMenuIdByRoleId(roleId, userId));
+      return this.actionResult(this.scepterService.listMenuIdByRoleId(roleId, userId));
    }
 
    @RequestMapping(
@@ -211,7 +203,7 @@ public class ScepterController extends BasicController {
       code = 1415L
    )
    public ActionResult addMenusAuths(@RequestBody RoleMenuVO roleMenuVO) {
-      return this.actionResult(this.e.addMenusAuths(roleMenuVO));
+      return this.actionResult(this.scepterService.addMenusAuths(roleMenuVO));
    }
 
    @RequestMapping(
@@ -222,7 +214,7 @@ public class ScepterController extends BasicController {
       needLogin = true
    )
    public ActionResult userRolesList(@RequestParam("userId") String userId) {
-      return this.actionResult(this.e.getRolesByUserId(userId));
+      return this.actionResult(this.scepterService.getRolesByUserId(userId));
    }
 
    @RequestMapping(
@@ -237,7 +229,7 @@ public class ScepterController extends BasicController {
       needLogin = true
    )
    public ActionResult role(@RequestParam("roleId") String roleId) {
-      return this.actionResult(this.e.getRole(roleId));
+      return this.actionResult(this.scepterService.getRole(roleId));
    }
 
    @RequestMapping(
@@ -250,7 +242,7 @@ public class ScepterController extends BasicController {
       code = 1404L
    )
    public ActionResult editRole(@RequestBody RoleVO roleVO, @RequestHeader("x-user-id") String userId) {
-      return this.actionResult(this.e.editRole(roleVO, userId));
+      return this.actionResult(this.scepterService.editRole(roleVO, userId));
    }
 
    @RequestMapping(
@@ -263,7 +255,7 @@ public class ScepterController extends BasicController {
       code = 1402L
    )
    public ActionResult removeRole(@RequestParam("roleId") String roleId) {
-      return this.actionResult(this.e.deleteRole(roleId));
+      return this.actionResult(this.scepterService.deleteRole(roleId));
    }
 
    @RequestMapping(
@@ -276,8 +268,8 @@ public class ScepterController extends BasicController {
       code = 1401L
    )
    public ActionResult role(@RequestBody RoleVO roleVO, @RequestHeader("x-user-id") String userId) {
-      Ref a = new Ref("");
-      return this.actionResult(this.e.addRole(roleVO, a, userId), a.get());
+      Ref ref = new Ref("");
+      return this.actionResult(this.scepterService.addRole(roleVO, ref, userId), ref.get());
    }
 
    @RequestMapping(
@@ -289,6 +281,6 @@ public class ScepterController extends BasicController {
       needLogin = true
    )
    public ActionResult roleUsers(@RequestBody RoleUserVO roleUserVO) {
-      return this.actionResult(this.e.setRoleUser(roleUserVO.getRoleId(), roleUserVO.getUserIds()));
+      return this.actionResult(this.scepterService.setRoleUser(roleUserVO.getRoleId(), roleUserVO.getUserIds()));
    }
 }

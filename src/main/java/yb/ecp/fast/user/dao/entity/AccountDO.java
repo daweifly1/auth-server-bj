@@ -14,64 +14,62 @@ public class AccountDO {
 
 
    public String getLoginName() {
-      return a.g;
+      return g;
    }
 
    public void setUserId(String a1) {
-      a.L = a1;
+      L = a1;
    }
 
    public void setUpdateTime(Date a1) {
-      a.m = a1;
+      m = a1;
    }
 
    public void setStatus(Integer a1) {
-      a.ALLATORIxDEMO = a1;
+      ALLATORIxDEMO = a1;
    }
 
    public void setLoginName(String a1) {
-      a.g = a1 == null?null:a1.trim();
+      g = a1 == null ? null : a1.trim();
    }
 
    public Integer getStatus() {
-      return a.ALLATORIxDEMO;
+      return ALLATORIxDEMO;
    }
 
    public Date getCreateTime() {
-      return a.e;
+      return e;
    }
 
    public String getLastLoginIp() {
-      return a.F;
+      return F;
    }
 
    public Date getUpdateTime() {
-      return a.m;
+      return m;
    }
 
    public void setLastLoginTime(Date a1) {
-      a.d = a1;
+      d = a1;
    }
 
    public void setCreateTime(Date a1) {
-      a.e = a1;
+      e = a1;
    }
 
    public void setLastLoginIp(String a1) {
-      a.F = a1 == null?null:a1.trim();
+      F = a1 == null ? null : a1.trim();
    }
 
    public String getUserId() {
-      return a.L;
+      return L;
    }
 
    public AccountDO() {
-      Date var10001 = new Date;
-      super(0L);
-      var10001.d = a;
+      super();
    }
 
    public Date getLastLoginTime() {
-      return a.d;
+      return d;
    }
 }

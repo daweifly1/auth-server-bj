@@ -13,58 +13,58 @@ public class WorkspaceDO {
 
 
    public Integer getSite() {
-      return a.L;
+      return L;
    }
 
    public String getTempId() {
-      return a.g;
+      return g;
    }
 
    public void setName(String a1) {
-      a.m = a1;
+      m = a1;
    }
 
    public String getStatus() {
-      return a.F;
+      return F;
    }
 
    public void setTempId(String a1) {
-      a.g = a1;
+      g = a1;
    }
 
    public void setRemark(String a1) {
-      a.d = a1;
+      d = a1;
    }
 
    public String getType() {
-      return a.e;
+      return e;
    }
 
    public String getId() {
-      return a.ALLATORIxDEMO;
+      return ALLATORIxDEMO;
    }
 
    public void setStatus(String a1) {
-      a.F = a1;
+      F = a1;
    }
 
    public String getRemark() {
-      return a.d;
+      return d;
    }
 
    public String getName() {
-      return a.m;
+      return m;
    }
 
    public void setSite(Integer a1) {
-      a.L = a1;
+      L = a1;
    }
 
    public void setType(String a1) {
-      a.e = a1;
+      e = a1;
    }
 
    public void setId(String a1) {
-      a.ALLATORIxDEMO = a1;
+      ALLATORIxDEMO = a1;
    }
 }

@@ -2,82 +2,95 @@ package yb.ecp.fast.user.service.base;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import java.util.List;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.transaction.annotation.Transactional;
 import yb.ecp.fast.infra.infra.PageCommonVO;
 import yb.ecp.fast.infra.infra.SearchCommonVO;
 import yb.ecp.fast.user.dao.mapper.base.BaseMapper;
 import yb.ecp.fast.user.infra.ErrorCode;
-import yb.ecp.fast.user.service.VO.RoleMenuVO;
-import yb.ecp.fast.user.service.base.BaseTransVODOService;
 
-public class BaseService extends BaseTransVODOService {
+import java.util.List;
 
-   BaseMapper ALLATORIxDEMO;
+public class BaseService<V, D> extends BaseTransVODOService<V, D> {
+   BaseMapper<V, D> baseMapper;
+
+   protected BaseService(Class<V> vClass, Class<D> dClass) {
+      super(vClass, dClass);
+   }
+
+   protected void addMapper(BaseMapper baseMapper) {
+      this.baseMapper = baseMapper;
+   }
+
+   protected ErrorCode checkParam(V v) {
+      if (v == null) {
+         return ErrorCode.IllegalArument;
+      }
+      return ErrorCode.Success;
+   }
+
+   public PageCommonVO list(SearchCommonVO<V> condition) {
+      PageCommonVO pageCommonVO = new PageCommonVO();
+      if (StringUtils.isNotBlank(condition.getSort())) {
+         PageHelper.orderBy(genColum(condition.getSort()));
+      } else {
+         PageHelper.orderBy("id ");
+      }
+      PageHelper.startPage(condition.getPageNum().intValue(), condition.getPageSize().intValue());
+      List<D> doList = this.baseMapper.list(condition.getFilters());
+      List<V> voList = getVOList(doList);
+      pageCommonVO.setPageInfo(new PageInfo(doList));
+      pageCommonVO.setPageInfoList(voList);
+      return pageCommonVO;
+   }
+
+   private static String genColum(String str) {
+      if (str.trim().equalsIgnoreCase("ID")) {
+         return str;
+      }
+      return str.replaceAll("[A-Z]", "_$0").toUpperCase();
+   }
 
 
    @Transactional
-   public ErrorCode insert(Object a1) {
-      ErrorCode var2;
-      if((var2 = a.checkParam(a1)) != ErrorCode.Success) {
-         return var2;
-      } else {
-         a1 = a.getDO(a1);
-         return a.ALLATORIxDEMO.insert(a1) > 0?ErrorCode.Success:ErrorCode.FailedToInsertRecord;
+   public ErrorCode insert(V v) {
+      ErrorCode ret = checkParam(v);
+      if (ret != ErrorCode.Success) {
+         return ret;
       }
-   }
+      D d = getDO(v);
 
-   public Object item(String a1) {
-      try {
-         Object var2 = a.getVO(a.ALLATORIxDEMO.item(a1));
-         return var2;
-      } catch (Exception var3) {
-         return null;
-      }
+      int effectRow = this.baseMapper.insert(d);
+      return effectRow > 0 ? ErrorCode.Success : ErrorCode.FailedToInsertRecord;
    }
 
    @Transactional
-   public ErrorCode update(Object a1) {
-      ErrorCode var2;
-      if((var2 = a.checkParam(a1)) != ErrorCode.Success) {
-         return var2;
-      } else {
-         a1 = a.getDO(a1);
-         return a.ALLATORIxDEMO.update(a1) > 0?ErrorCode.Success:ErrorCode.FailedToUpdateRecord;
+   public ErrorCode update(V v) {
+      ErrorCode ret = checkParam(v);
+      if (ret != ErrorCode.Success) {
+         return ret;
       }
+      D d = getDO(v);
+
+      int effectRow = this.baseMapper.update(d);
+      return effectRow > 0 ? ErrorCode.Success : ErrorCode.FailedToUpdateRecord;
    }
 
-   public PageCommonVO list(SearchCommonVO a1) {
-      PageCommonVO var2 = new PageCommonVO();
-      PageHelper.orderBy(RoleMenuVO.ALLATORIxDEMO("4p2c#g\bf6v2\"3g$a"));
-      PageHelper.startPage(a1.getPageNum().intValue(), a1.getPageSize().intValue());
-      List a2;
-      List var10002 = a.getVOList(a2 = a.ALLATORIxDEMO.list(a1.getFilters()));
-      PageInfo var10004 = new PageInfo;
-      var2.<init>(a2);
-      var10004.setPageInfo(var2);
-      var10002.setPageInfoList(var2);
-      return var2;
-   }
-
-   protected BaseService(Class a1, Class a2) {
-      super(a1, a2);
-   }
-
-   public Object item(Integer a1) {
+   public V item(String no) {
       try {
-         Object var2 = a.getVO(a.ALLATORIxDEMO.item(a1));
-         return var2;
-      } catch (Exception var3) {
-         return null;
+         D d = this.baseMapper.item(no);
+         return (V) getVO(d);
+      } catch (Exception e) {
       }
+      return null;
    }
 
-   protected ErrorCode checkParam(Object a1) {
-      return a1 == null?ErrorCode.IllegalArument:ErrorCode.Success;
-   }
-
-   protected void addMapper(BaseMapper a1) {
-      a.ALLATORIxDEMO = a1;
+   public V item(Integer id) {
+      try {
+         D d = this.baseMapper.item(id);
+         return (V) getVO(d);
+      } catch (Exception e) {
+      }
+      return null;
    }
 }

@@ -2,55 +2,57 @@ package yb.ecp.fast.user.service.VO;
 
 import java.io.Serializable;
 import java.util.List;
-import yb.ecp.fast.user.service.VO.ProfileVO;
 
 public class UserVO extends ProfileVO implements Serializable {
 
-   private List m;
-   private String g;
-   private String d;
-   private List L;
-   private String e;
+   private List roleIds;
+   private String roleNames;
+   private String openId;
+   private List roleVOs;
+   private String deptName;
    private static final long ALLATORIxDEMO = 1L;
+
+   public UserVO() {
+   }
 
 
    public List getRoleVOs() {
-      return a.L;
+      return roleVOs;
    }
 
    public String getDeptName() {
-      return a.e;
+      return deptName;
    }
 
    public void setDeptName(String a1) {
-      a.e = a1;
+      deptName = a1;
    }
 
    public void setRoleNames(String a1) {
-      a.g = a1;
+      roleNames = a1;
    }
 
    public void setRoleVOs(List a1) {
-      a.L = a1;
+      roleVOs = a1;
    }
 
    public List getRoleIds() {
-      return a.m;
+      return roleIds;
    }
 
    public String getOpenId() {
-      return a.d;
+      return openId;
    }
 
    public String getRoleNames() {
-      return a.g;
+      return roleNames;
    }
 
    public void setOpenId(String a1) {
-      a.d = a1;
+      openId = a1;
    }
 
    public void setRoleIds(List a1) {
-      a.m = a1;
+      roleIds = a1;
    }
 }

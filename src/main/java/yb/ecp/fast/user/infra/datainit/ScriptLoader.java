@@ -1,14 +1,13 @@
 package yb.ecp.fast.user.infra.datainit;
 
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.util.StreamUtils;
+import yb.ecp.fast.infra.infra.log.LogHelper;
+
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.Charset;
-import org.springframework.core.io.ClassPathResource;
-import org.springframework.util.StreamUtils;
-import yb.ecp.fast.infra.infra.log.LogHelper;
-import yb.ecp.fast.user.dao.entity.AuthDO;
-import yb.ecp.fast.user.dao.entity.TemplateDO;
 
 public class ScriptLoader {
 
@@ -27,12 +26,11 @@ public class ScriptLoader {
                label113: {
                   try {
                      var12 = true;
-                     var2 = StreamUtils.copyToString(var1 = (new ClassPathResource(a)).getInputStream(), Charset.forName(TemplateDO.ALLATORIxDEMO("cjp")));
+                      var2 = StreamUtils.copyToString(var1 = (new ClassPathResource(a)).getInputStream(), Charset.forName("UTF-8"));
                      var12 = false;
                      break label114;
                   } catch (FileNotFoundException var17) {
-                     LogHelper.fatal(AuthDO.ALLATORIxDEMO("2c?l>vqd8l5\"7k=g"), var17);
-                     var12 = false;
+                      var12 = false;
                      break label113;
                   } catch (IOException var18) {
                      LogHelper.fatal(var18.getMessage(), var18);
@@ -90,8 +88,7 @@ public class ScriptLoader {
 
       if(var10000 == null) {
          String[] var20 = new String[0];
-         boolean var10002 = true;
-         return true;
+          return var20;
       } else {
          return var2.split(";");
       }

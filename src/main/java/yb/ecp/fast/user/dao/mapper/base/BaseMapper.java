@@ -2,17 +2,17 @@ package yb.ecp.fast.user.dao.mapper.base;
 
 import java.util.List;
 
-public interface BaseMapper {
+public interface BaseMapper<V, D> {
+   public abstract int insert(D paramD);
 
-   int update(Object var1);
+   public abstract int update(D paramD);
 
-   List list(Object var1);
+   public abstract List<D> list(V paramV);
 
-   Object item(Integer var1);
+   public abstract D item(String paramString);
 
-   int updateNullAble(Object var1);
+   public abstract D item(Integer paramInteger);
 
-   Object item(String var1);
-
-   int insert(Object var1);
+   public abstract int updateNullAble(D paramD);
 }
+

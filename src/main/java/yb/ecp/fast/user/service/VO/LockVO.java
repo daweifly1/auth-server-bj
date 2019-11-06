@@ -11,18 +11,18 @@ public class LockVO {
 
 
    public List getUserIds() {
-      return a.ALLATORIxDEMO;
+      return ALLATORIxDEMO;
    }
 
    public void setLock(Integer a1) {
-      a.e = a1;
+      e = a1;
    }
 
    public Integer getLock() {
-      return a.e;
+      return e;
    }
 
    public void setUserIds(List a1) {
-      a.ALLATORIxDEMO = a1;
+      ALLATORIxDEMO = a1;
    }
 }

@@ -8,10 +8,10 @@ public class RoleIdsVO {
 
 
    public void setRoleIds(List a1) {
-      a.ALLATORIxDEMO = a1;
+      ALLATORIxDEMO = a1;
    }
 
    public List getRoleIds() {
-      return a.ALLATORIxDEMO;
+      return ALLATORIxDEMO;
    }
 }

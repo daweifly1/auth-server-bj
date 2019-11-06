@@ -9,10 +9,10 @@ public class MenuConfigVO extends MenuBase {
 
 
    public void setChildren(List a1) {
-      a.ALLATORIxDEMO = a1;
+      ALLATORIxDEMO = a1;
    }
 
    public List getChildren() {
-      return a.ALLATORIxDEMO;
+      return ALLATORIxDEMO;
    }
 }

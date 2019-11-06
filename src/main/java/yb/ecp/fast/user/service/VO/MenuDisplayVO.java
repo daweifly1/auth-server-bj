@@ -12,35 +12,35 @@ public class MenuDisplayVO extends MenuBase {
 
 
    public String getUrl() {
-      return a.e;
+      return e;
    }
 
    public String getState() {
-      return a.d;
+      return d;
    }
 
    public void setUrl(String a1) {
-      a.e = a1;
+      e = a1;
    }
 
    public void setChildren(List a1) {
-      a.ALLATORIxDEMO = a1;
+      ALLATORIxDEMO = a1;
    }
 
    public void setState(String a1) {
-      a.d = a1;
+      d = a1;
    }
 
    public List getAuths() {
-      return a.L;
+      return L;
    }
 
    public List getChildren() {
-      return a.ALLATORIxDEMO;
+      return ALLATORIxDEMO;
    }
 
    public void setAuths(List a1) {
-      a.L = a1;
+      L = a1;
    }
 
 }

@@ -19,58 +19,58 @@ public class DepartmentVO {
 
 
    public void setLeaf(Integer a1) {
-      a.ALLATORIxDEMO = a1;
+      ALLATORIxDEMO = a1;
    }
 
    public void setName(String a1) {
-      a.L = a1;
+      L = a1;
    }
 
    public String getSpaceId() {
-      return a.g;
+      return g;
    }
 
    public Integer getSeq() {
-      return a.e;
+      return e;
    }
 
    public void setCode(String a1) {
-      a.m = a1;
+      m = a1;
    }
 
    public void setId(String a1) {
-      a.F = a1;
+      F = a1;
    }
 
    public String getCode() {
-      return a.m;
+      return m;
    }
 
    public void setParentId(String a1) {
-      a.d = a1;
+      d = a1;
    }
 
    public Integer getLeaf() {
-      return a.ALLATORIxDEMO;
+      return ALLATORIxDEMO;
    }
 
    public void setSpaceId(String a1) {
-      a.g = a1;
+      g = a1;
    }
 
    public String getParentId() {
-      return a.d;
+      return d;
    }
 
    public String getId() {
-      return a.F;
+      return F;
    }
 
    public void setSeq(Integer a1) {
-      a.e = a1;
+      e = a1;
    }
 
    public String getName() {
-      return a.L;
+      return L;
    }
 }

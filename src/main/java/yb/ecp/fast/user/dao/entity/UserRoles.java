@@ -8,18 +8,18 @@ public class UserRoles {
 
 
    public void setUserId(String a1) {
-      a.e = a1;
+      e = a1;
    }
 
    public String getUserId() {
-      return a.e;
+      return e;
    }
 
    public void setRoleId(String a1) {
-      a.ALLATORIxDEMO = a1;
+      ALLATORIxDEMO = a1;
    }
 
    public String getRoleId() {
-      return a.ALLATORIxDEMO;
+      return ALLATORIxDEMO;
    }
 }

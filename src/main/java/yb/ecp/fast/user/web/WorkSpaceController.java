@@ -18,7 +18,7 @@ import yb.ecp.fast.user.service.VO.WorkspaceVO;
 public class WorkSpaceController extends BasicController {
 
    @Autowired
-   WorkspaceService ALLATORIxDEMO;
+   WorkspaceService workspaceService;
 
 
    @RequestMapping(
@@ -27,7 +27,7 @@ public class WorkSpaceController extends BasicController {
    )
    @ApiOperation("查看工作空间信息")
    public ActionResult item(@RequestParam("id") String id) {
-      return this.actionResult(this.ALLATORIxDEMO.item(id));
+      return this.actionResult(this.workspaceService.item(id));
    }
 
    @RequestMapping(
@@ -36,7 +36,7 @@ public class WorkSpaceController extends BasicController {
    )
    @ApiOperation("解锁企业工作空间")
    public ActionResult unlock(@RequestParam("workspaceId") String workspaceId) {
-      return this.actionResult(this.ALLATORIxDEMO.unlock(workspaceId));
+      return this.actionResult(this.workspaceService.unlock(workspaceId));
    }
 
    @RequestMapping(
@@ -45,7 +45,7 @@ public class WorkSpaceController extends BasicController {
    )
    @ApiOperation("冻结锁定企业工作空间")
    public ActionResult lock(@RequestParam("workspaceId") String workspaceId) {
-      return this.actionResult(this.ALLATORIxDEMO.lock(workspaceId));
+      return this.actionResult(this.workspaceService.lock(workspaceId));
    }
 
    @RequestMapping(
@@ -54,7 +54,7 @@ public class WorkSpaceController extends BasicController {
    )
    @ApiOperation("删除企业工作空间")
    public ActionResult remove(@RequestParam("workspaceId") String workspaceId) {
-      return this.actionResult(this.ALLATORIxDEMO.remove(workspaceId));
+      return this.actionResult(this.workspaceService.remove(workspaceId));
    }
 
    @RequestMapping(
@@ -63,7 +63,7 @@ public class WorkSpaceController extends BasicController {
    )
    @ApiOperation("批量删除工作空间")
    public ActionResult remove(@RequestBody List ids) {
-      return this.actionResult(this.ALLATORIxDEMO.removeByIds(ids));
+      return this.actionResult(this.workspaceService.removeByIds(ids));
    }
 
    @RequestMapping(
@@ -72,7 +72,7 @@ public class WorkSpaceController extends BasicController {
    )
    @ApiOperation("增加工作空间")
    public ActionResult insert(@RequestBody WorkspaceVO workspaceVO) throws Exception {
-      return this.actionResult(this.ALLATORIxDEMO.insert(workspaceVO));
+      return this.actionResult(this.workspaceService.insert(workspaceVO));
    }
 
    @RequestMapping(
@@ -81,7 +81,7 @@ public class WorkSpaceController extends BasicController {
    )
    @ApiOperation("修改工作空间对应的权限模板ID")
    public ActionResult updateTemplate(@RequestParam("workspaceId") String workspaceId, @RequestParam("templateId") String templateId) {
-      return this.actionResult(this.ALLATORIxDEMO.updateTemplate(workspaceId, templateId));
+      return this.actionResult(this.workspaceService.updateTemplate(workspaceId, templateId));
    }
 
    @RequestMapping(
@@ -90,7 +90,7 @@ public class WorkSpaceController extends BasicController {
    )
    @ApiOperation("修改工作空间信息")
    public ActionResult update(@RequestBody WorkspaceVO workspaceVO) {
-      return this.actionResult(this.ALLATORIxDEMO.update(workspaceVO));
+      return this.actionResult(this.workspaceService.update(workspaceVO));
    }
 
    @RequestMapping(
@@ -99,6 +99,6 @@ public class WorkSpaceController extends BasicController {
    )
    @ApiOperation("查询所有工作空间")
    public ActionResult listSpace() {
-      return this.actionResult(this.ALLATORIxDEMO.queryList());
+      return this.actionResult(this.workspaceService.queryList());
    }
 }

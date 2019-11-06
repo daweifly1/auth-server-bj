@@ -1,49 +1,44 @@
 package yb.ecp.fast.user.service.VO;
 
-import yb.ecp.fast.user.service.VO.RoleMenuVO;
-import yb.ecp.fast.user.service.VO.TmpMenusVO;
-
 public class UserLoginVO {
-
-   private String d;
-   private String L;
-   private String e;
-   private String ALLATORIxDEMO;
-
-
-   public void setAuthId(String a1) {
-      a.d = a1;
-   }
-
-   public void setPassword(String a1) {
-      a.e = a1;
-   }
-
-   public void setCode(String a1) {
-      a.ALLATORIxDEMO = a1;
-   }
-
-   public String toString() {
-      return (new StringBuilder()).insert(0, RoleMenuVO.ALLATORIxDEMO("W$g%N8e>lM,n8e>lc:gj%")).append(a.L).append('\'').append(TmpMenusVO.ALLATORIxDEMO("|#= /n{")).append(a.e).append('\'').append(RoleMenuVO.ALLATORIxDEMO("{\"4m3gj%")).append(a.ALLATORIxDEMO).append('\'').append('}').toString();
-   }
+   private String loginName;
+   private String password;
+   private String code;
+   private String authId;
 
    public String getLoginName() {
-      return a.L;
+      return this.loginName;
    }
 
-   public void setLoginName(String a1) {
-      a.L = a1;
-   }
-
-   public String getAuthId() {
-      return a.d;
-   }
-
-   public String getCode() {
-      return a.ALLATORIxDEMO;
+   public void setLoginName(String loginName) {
+      this.loginName = loginName;
    }
 
    public String getPassword() {
-      return a.e;
+      return this.password;
+   }
+
+   public void setPassword(String password) {
+      this.password = password;
+   }
+
+   public String getCode() {
+      return this.code;
+   }
+
+   public void setCode(String code) {
+      this.code = code;
+   }
+
+   public String getAuthId() {
+      return this.authId;
+   }
+
+   public void setAuthId(String authId) {
+      this.authId = authId;
+   }
+
+   public String toString() {
+      return "UserLoginVO{loginName='" + this.loginName + '\'' + ", pass='" + this.password + '\'' + ", code='" + this.code + '\'' + '}';
    }
 }

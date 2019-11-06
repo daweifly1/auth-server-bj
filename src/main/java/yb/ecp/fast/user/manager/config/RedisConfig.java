@@ -20,7 +20,7 @@ public class RedisConfig {
    @Bean
    JedisPool ALLATORIxDEMO() {
       JedisPoolConfig var1;
-      (var1 = new JedisPoolConfig()).setMaxTotal(a.ALLATORIxDEMO);
-      return new JedisPool(var1, a.e, a.L);
+      (var1 = new JedisPoolConfig()).setMaxTotal(ALLATORIxDEMO);
+      return new JedisPool(var1, e, L);
    }
 }

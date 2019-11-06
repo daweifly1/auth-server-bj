@@ -22,122 +22,122 @@ public class ProfileDO {
 
 
    public void setTelephone(String a1) {
-      a.H = a1;
+      H = a1;
    }
 
    public String getNickname() {
-      return a.k;
+      return k;
    }
 
    public void setIcon(String a1) {
-      a.F = a1;
+      F = a1;
    }
 
    public String getName() {
-      return a.K;
+      return K;
    }
 
    public void setUserId(String a1) {
-      a.M = a1;
+      M = a1;
    }
 
    public String getSpaceId() {
-      return a.g;
+      return g;
    }
 
    public String getUserId() {
-      return a.M;
+      return M;
    }
 
    public void setSex(Integer a1) {
-      a.ALLATORIxDEMO = a1;
+      ALLATORIxDEMO = a1;
    }
 
    public String getIcon() {
-      return a.F;
+      return F;
    }
 
    public void setLocked(Integer a1) {
-      a.d = a1;
+      d = a1;
    }
 
    public void setEmail(String a1) {
-      a.E = a1;
+      E = a1;
    }
 
    public String getAreaCode() {
-      return a.J;
+      return J;
    }
 
    public void setMobile(String a1) {
-      a.m = a1;
+      m = a1;
    }
 
    public String getDeptId() {
-      return a.L;
+      return L;
    }
 
    public Integer getLocked() {
-      return a.d;
+      return d;
    }
 
    public void setAreaCode(String a1) {
-      a.J = a1;
+      J = a1;
    }
 
    public void setSpaceId(String a1) {
-      a.g = a1;
+      g = a1;
    }
 
    public Integer getSex() {
-      return a.ALLATORIxDEMO;
+      return ALLATORIxDEMO;
    }
 
    public void setIdNumber(String a1) {
-      a.C = a1;
+      C = a1;
    }
 
    public void setNickname(String a1) {
-      a.k = a1;
+      k = a1;
    }
 
    public void setUpdateDate(Date a1) {
-      a.e = a1;
+      e = a1;
    }
 
    public void setDeptId(String a1) {
-      a.L = a1;
+      L = a1;
    }
 
    public Date getCreateDate() {
-      return a.j;
+      return j;
    }
 
    public String getMobile() {
-      return a.m;
+      return m;
    }
 
    public String getTelephone() {
-      return a.H;
+      return H;
    }
 
    public void setCreateDate(Date a1) {
-      a.j = a1;
+      j = a1;
    }
 
    public Date getUpdateDate() {
-      return a.e;
+      return e;
    }
 
    public void setName(String a1) {
-      a.K = a1;
+      K = a1;
    }
 
    public String getIdNumber() {
-      return a.C;
+      return C;
    }
 
    public String getEmail() {
-      return a.E;
+      return E;
    }
 }

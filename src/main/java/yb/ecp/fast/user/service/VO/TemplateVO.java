@@ -10,35 +10,35 @@ public class TemplateVO {
 
 
    public void setName(String a1) {
-      a.L = a1;
+      L = a1;
    }
 
    public void setRemark(String a1) {
-      a.d = a1;
+      d = a1;
    }
 
    public void setId(String a1) {
-      a.ALLATORIxDEMO = a1;
+      ALLATORIxDEMO = a1;
    }
 
    public void setSite(Integer a1) {
-      a.e = a1;
+      e = a1;
    }
 
    public String getName() {
-      return a.L;
+      return L;
    }
 
    public String getId() {
-      return a.ALLATORIxDEMO;
+      return ALLATORIxDEMO;
    }
 
    public Integer getSite() {
-      return a.e;
+      return e;
    }
 
    public String getRemark() {
-      return a.d;
+      return d;
    }
 
 }

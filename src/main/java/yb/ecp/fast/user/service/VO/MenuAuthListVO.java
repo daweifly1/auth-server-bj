@@ -9,18 +9,18 @@ public class MenuAuthListVO {
 
 
    public List getAuths() {
-      return a.e;
+      return e;
    }
 
    public Integer getMenuId() {
-      return a.ALLATORIxDEMO;
+      return ALLATORIxDEMO;
    }
 
    public void setMenuId(Integer a1) {
-      a.ALLATORIxDEMO = a1;
+      ALLATORIxDEMO = a1;
    }
 
    public void setAuths(List a1) {
-      a.e = a1;
+      e = a1;
    }
 }

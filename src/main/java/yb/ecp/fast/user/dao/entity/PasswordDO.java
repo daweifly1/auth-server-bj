@@ -10,18 +10,18 @@ public class PasswordDO extends PasswordDOKey {
 
 
    public void setUpdateTime(Date a1) {
-      a.ALLATORIxDEMO = a1;
+      ALLATORIxDEMO = a1;
    }
 
    public Date getUpdateTime() {
-      return a.ALLATORIxDEMO;
+      return ALLATORIxDEMO;
    }
 
    public void setPassword(String a1) {
-      a.e = a1 == null?null:a1.trim();
+      e = a1 == null?null:a1.trim();
    }
 
    public String getPassword() {
-      return a.e;
+      return e;
    }
 }

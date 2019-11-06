@@ -7,15 +7,15 @@ import yb.ecp.fast.user.dao.entity.RoleMenuDO;
 @Mapper
 public interface RoleMenuMapper {
 
-   List getMenuByRoleId(String var1);
+   List<Integer> getMenuByRoleId(String var1);
 
    int insert(RoleMenuDO var1);
 
    int deleteMenu(String var1);
 
-   List getMenuIdsByRoleIds(List var1);
+   List<Integer> getMenuIdsByRoleIds(List var1);
 
-   List getAuthByRoleId(String var1);
+   List<Integer> getAuthByRoleId(String var1);
 
    int insertSelective(RoleMenuDO var1);
 }

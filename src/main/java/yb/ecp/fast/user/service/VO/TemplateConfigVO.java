@@ -10,26 +10,26 @@ public class TemplateConfigVO {
 
 
    public void setMenuIds(List a1) {
-      a.ALLATORIxDEMO = a1;
+      ALLATORIxDEMO = a1;
    }
 
    public String getTempId() {
-      return a.e;
+      return e;
    }
 
    public List getMenuIds() {
-      return a.ALLATORIxDEMO;
+      return ALLATORIxDEMO;
    }
 
    public List getAuthIds() {
-      return a.L;
+      return L;
    }
 
    public void setAuthIds(List a1) {
-      a.L = a1;
+      L = a1;
    }
 
    public void setTempId(String a1) {
-      a.e = a1;
+      e = a1;
    }
 }

@@ -13,11 +13,11 @@ public class BaseItemService extends BaseTransVODOService {
 
 
    public ErrorCode delete(String a1) {
-      return a.ALLATORIxDEMO.delete(a1) > 0?ErrorCode.Success:ErrorCode.FailedToInsertRecord;
+      return ALLATORIxDEMO.delete(a1) > 0?ErrorCode.Success:ErrorCode.FailedToInsertRecord;
    }
 
    protected void addMapper(BaseItemMapper a1) {
-      a.ALLATORIxDEMO = a1;
+      ALLATORIxDEMO = a1;
    }
 
    protected BaseItemService(Class a1, Class a2) {
@@ -33,17 +33,17 @@ public class BaseItemService extends BaseTransVODOService {
          while(var10000.hasNext()) {
             var10000 = a2;
             Object var3 = a2.next();
-            var3 = a.getDO(var3);
+            var3 = getDO(var3);
             var2.add(var3);
          }
 
-         return a.ALLATORIxDEMO.insertBatch(var2) > 0?ErrorCode.Success:ErrorCode.FailedToInsertRecord;
+         return ALLATORIxDEMO.insertBatch(var2) > 0?ErrorCode.Success:ErrorCode.FailedToInsertRecord;
       } else {
          return ErrorCode.Success;
       }
    }
 
    public List list(String a1) {
-      return a.getVOList(a.ALLATORIxDEMO.list(a1));
+      return getVOList(ALLATORIxDEMO.list(a1));
    }
 }

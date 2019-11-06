@@ -20,7 +20,7 @@ import yb.ecp.fast.user.service.VO.PasswordVO;
 public class AccountController extends BasicController {
 
    @Autowired
-   AccountService ALLATORIxDEMO;
+   AccountService accountService;
 
 
    @RequestMapping(
@@ -31,7 +31,7 @@ public class AccountController extends BasicController {
       code = 1005L
    )
    public ActionResult accountPwd(@RequestBody AccountPwdVO accountPwdVO) throws Exception {
-      return this.actionResult(this.ALLATORIxDEMO.addAccountPwd(accountPwdVO));
+      return this.actionResult(this.accountService.addAccountPwd(accountPwdVO));
    }
 
    @RequestMapping(
@@ -42,7 +42,7 @@ public class AccountController extends BasicController {
       actionLevel = 3
    )
    public ActionResult password(@RequestParam("userId") String userId, @RequestParam("password") String password) throws Exception {
-      return this.actionResult(this.ALLATORIxDEMO.updatePassword(userId, password));
+      return this.actionResult(this.accountService.updatePassword(userId, password));
    }
 
    @RequestMapping(
@@ -50,7 +50,7 @@ public class AccountController extends BasicController {
       method = {RequestMethod.GET}
    )
    public ActionResult checkLoginName(String loginName) {
-      return this.actionResult(this.ALLATORIxDEMO.checkLoginName(loginName));
+      return this.actionResult(this.accountService.checkLoginName(loginName));
    }
 
    @RequestMapping(
@@ -61,7 +61,7 @@ public class AccountController extends BasicController {
       actionLevel = 3
    )
    public ActionResult password(@RequestParam("userId") String userId) throws Exception {
-      return this.actionResult(this.ALLATORIxDEMO.removeAllPassword(userId));
+      return this.actionResult(this.accountService.removeAllPassword(userId));
    }
 
    @RequestMapping(
@@ -71,7 +71,7 @@ public class AccountController extends BasicController {
       actionLevel = 3
    )
    public ActionResult account(@RequestBody AccountVO accountVO) {
-      return this.actionResult(this.ALLATORIxDEMO.addAccount(accountVO));
+      return this.actionResult(this.accountService.addAccount(accountVO));
    }
 
    @RequestMapping(
@@ -82,7 +82,7 @@ public class AccountController extends BasicController {
       actionLevel = 3
    )
    public ActionResult password(@RequestBody PasswordVO passwordVO) throws Exception {
-      return this.actionResult(this.ALLATORIxDEMO.insertPassword(passwordVO));
+      return this.actionResult(this.accountService.insertPassword(passwordVO));
    }
 
    @RequestMapping(
@@ -93,7 +93,7 @@ public class AccountController extends BasicController {
       needLogin = true
    )
    public ActionResult updateLoginName(@RequestBody AccountVO accountVO) throws Exception {
-      return this.actionResult(this.ALLATORIxDEMO.updateLoginName(accountVO));
+      return this.actionResult(this.accountService.updateLoginName(accountVO));
    }
 
    @RequestMapping(
@@ -105,7 +105,7 @@ public class AccountController extends BasicController {
       code = 1010L
    )
    public ActionResult resetPassword(@RequestBody List userIds) throws Exception {
-      return this.actionResult(this.ALLATORIxDEMO.resetPassword(userIds));
+      return this.actionResult(this.accountService.resetPassword(userIds));
    }
 
    @RequestMapping(
@@ -116,7 +116,7 @@ public class AccountController extends BasicController {
       actionLevel = 3
    )
    public ActionResult removeAccountByUserId(@RequestParam("userId") String userId) {
-      return this.actionResult(this.ALLATORIxDEMO.removeAccountByUserId(userId));
+      return this.actionResult(this.accountService.removeAccountByUserId(userId));
    }
 
    @RequestMapping(
@@ -127,6 +127,6 @@ public class AccountController extends BasicController {
       actionLevel = 3
    )
    public ActionResult account(@RequestParam("loginName") String loginName) {
-      return this.actionResult(this.ALLATORIxDEMO.removeAccount(loginName));
+      return this.actionResult(this.accountService.removeAccount(loginName));
    }
 }

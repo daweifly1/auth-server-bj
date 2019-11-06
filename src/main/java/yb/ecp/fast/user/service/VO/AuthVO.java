@@ -10,34 +10,34 @@ public class AuthVO {
 
 
    public Integer getAuthId() {
-      return a.d;
+      return d;
    }
 
    public void setAuthDesc(String a1) {
-      a.L = a1;
+      L = a1;
    }
 
    public String getAuthDesc() {
-      return a.L;
+      return L;
    }
 
    public String getAuthName() {
-      return a.e;
+      return e;
    }
 
    public Integer getParentId() {
-      return a.ALLATORIxDEMO;
+      return ALLATORIxDEMO;
    }
 
    public void setAuthName(String a1) {
-      a.e = a1;
+      e = a1;
    }
 
    public void setAuthId(Integer a1) {
-      a.d = a1;
+      d = a1;
    }
 
    public void setParentId(Integer a1) {
-      a.ALLATORIxDEMO = a1;
+      ALLATORIxDEMO = a1;
    }
 }

@@ -38,7 +38,7 @@ public interface MenuMapper {
 
    List getChildrenBySite(@Param("parentId") Integer var1, @Param("site") Integer var2);
 
-   List getDisplayedList(Integer var1);
+   List getDisplayedList(Integer site);
 
    MenuDO selectByPrimaryKey(Integer var1);
 

@@ -11,11 +11,11 @@ public interface ProfileMapper extends BaseMapper {
 
    int removeById(String var1);
 
-   int update(ProfileDO var1);
+   int update(ProfileDO profileDO);
 
    List list(ProfileConditionVO var1);
 
-   Integer queryCountByDept(String var1);
+   Integer queryCountByDept(String deptId);
 
    int insert(ProfileDO var1);
 

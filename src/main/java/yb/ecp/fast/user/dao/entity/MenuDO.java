@@ -17,90 +17,90 @@ public class MenuDO {
 
 
    public void setParentId(Long a1) {
-      a.g = a1;
+      g = a1;
    }
 
    public String getState() {
-      return a.L;
+      return L;
    }
 
    public void setLeaf(Short a1) {
-      a.ALLATORIxDEMO = a1;
+      ALLATORIxDEMO = a1;
    }
 
    public void setName(String a1) {
-      a.e = a1 == null?null:a1.trim();
+      e = a1 == null?null:a1.trim();
    }
 
    public String getIcon() {
-      return a.d;
+      return d;
    }
 
    public Short getLeaf() {
-      return a.ALLATORIxDEMO;
+      return ALLATORIxDEMO;
    }
 
    public void setSeq(Integer a1) {
-      a.C = a1;
+      C = a1;
    }
 
    public void setId(Integer a1) {
-      a.J = a1;
+      J = a1;
    }
 
    public void setShowFlag(Short a1) {
-      a.E = a1;
+      E = a1;
    }
 
    public Integer getId() {
-      return a.J;
+      return J;
    }
 
    public void setUrl(String a1) {
-      a.K = a1 == null?null:a1.trim();
+      K = a1 == null?null:a1.trim();
    }
 
    public void setIcon(String a1) {
-      a.d = a1 == null?null:a1.trim();
+      d = a1 == null?null:a1.trim();
    }
 
    public Short getShowFlag() {
-      return a.E;
+      return E;
    }
 
    public String getCode() {
-      return a.F;
+      return F;
    }
 
    public Long getParentId() {
-      return a.g;
+      return g;
    }
 
    public String getName() {
-      return a.e;
+      return e;
    }
 
    public Integer getChannel() {
-      return a.m;
+      return m;
    }
 
    public void setCode(String a1) {
-      a.F = a1 == null?null:a1.trim();
+      F = a1 == null?null:a1.trim();
    }
 
    public void setChannel(Integer a1) {
-      a.m = a1;
+      m = a1;
    }
 
    public Integer getSeq() {
-      return a.C;
+      return C;
    }
 
    public void setState(String a1) {
-      a.L = a1 == null?null:a1.trim();
+      L = a1 == null?null:a1.trim();
    }
 
    public String getUrl() {
-      return a.K;
+      return K;
    }
 }

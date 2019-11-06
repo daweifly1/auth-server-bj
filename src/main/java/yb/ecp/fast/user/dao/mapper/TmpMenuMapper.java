@@ -13,5 +13,5 @@ public interface TmpMenuMapper {
 
    int removeMenu(TmpMenuDO var1);
 
-   List queryList(String var1);
+   List<Integer> queryList(String var1);
 }

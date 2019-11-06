@@ -2,11 +2,7 @@ package yb.ecp.fast.user.web;
 
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import yb.ecp.fast.infra.infra.ActionResult;
 import yb.ecp.fast.infra.infra.SearchCommonVO;
 import yb.ecp.fast.user.infra.BasicController;
@@ -20,10 +16,10 @@ import yb.ecp.fast.user.service.VO.ProfileVO;
 public class PublicDataController extends BasicController {
 
    @Autowired
-   private ProfileService L;
+   private ProfileService profileService;
    private String e = "1";
    @Autowired
-   private DepartmentService ALLATORIxDEMO;
+   private DepartmentService departmentService;
 
 
    @RequestMapping(
@@ -32,7 +28,7 @@ public class PublicDataController extends BasicController {
    )
    @ApiOperation("查询用户列表详细信息")
    public ActionResult userDetail(@RequestParam("userId") String userId) throws Exception {
-      return this.actionResult(this.L.item(userId));
+      return this.actionResult(this.profileService.item(userId));
    }
 
    @RequestMapping(
@@ -40,12 +36,11 @@ public class PublicDataController extends BasicController {
       method = {RequestMethod.GET}
    )
    public ActionResult departmentList(@RequestParam("parentId") String parentId, @RequestParam("name") String name) {
-      DepartmentVO a;
-      DepartmentVO var10002 = a = new DepartmentVO();
-      a.setParentId(parentId);
-      a.setName(name);
-      var10002.setSpaceId(this.e);
-      return this.actionResult(this.ALLATORIxDEMO.queryDeptList(a));
+      DepartmentVO departmentVO= new DepartmentVO();
+      departmentVO.setParentId(parentId);
+      departmentVO.setName(name);
+      departmentVO.setSpaceId(this.e);
+      return this.actionResult(this.departmentService.queryDeptList(departmentVO));
    }
 
    @RequestMapping(
@@ -54,14 +49,13 @@ public class PublicDataController extends BasicController {
    )
    @ApiOperation("查询用户列表")
    public ActionResult userList(@RequestBody SearchCommonVO condition) {
-      if(condition.getFilters() == null) {
-         ProfileVO var10001 = new ProfileVO;
-         condition.<init>();
-         var10001.setFilters(condition);
+      if (null == condition.getFilters()) {
+         ProfileVO f = new ProfileVO();
+         condition.setFilters(f);
       }
 
       ((ProfileVO)condition.getFilters()).setSpaceId(this.e);
-      return this.actionResult(this.L.listAll(condition, (String)null).getPageInfo());
+      return this.actionResult(this.profileService.listAll(condition, (String) null).getPageInfo());
    }
 
    @RequestMapping(
@@ -69,7 +63,7 @@ public class PublicDataController extends BasicController {
       method = {RequestMethod.GET}
    )
    public ActionResult departmentDetail(@RequestParam("id") String id) {
-      return this.actionResult(this.ALLATORIxDEMO.item(id));
+      return this.actionResult(this.departmentService.item(id));
    }
 
 }

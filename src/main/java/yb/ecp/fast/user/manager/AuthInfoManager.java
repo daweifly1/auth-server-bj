@@ -20,7 +20,7 @@ public class AuthInfoManager {
       label39: {
          try {
             try {
-               var2 = (var3 = a.ALLATORIxDEMO.getResource()).get(a1);
+               var2 = (var3 = ALLATORIxDEMO.getResource()).get(a1);
                break label39;
             } catch (Exception var6) {
                LogHelper.fatal(var6.getMessage(), var6);
@@ -44,7 +44,7 @@ public class AuthInfoManager {
       label39: {
          try {
             try {
-               var3 = a.ALLATORIxDEMO.getResource();
+               var3 = ALLATORIxDEMO.getResource();
                var3.set(a1, a2);
                var3.expire(a1, 60);
                break label39;
@@ -70,7 +70,7 @@ public class AuthInfoManager {
       label39: {
          try {
             try {
-               Jedis var10000 = var3 = a.ALLATORIxDEMO.getResource();
+               Jedis var10000 = var3 = ALLATORIxDEMO.getResource();
                var2 = var10000.get(a1);
                var10000.del(a1);
                break label39;

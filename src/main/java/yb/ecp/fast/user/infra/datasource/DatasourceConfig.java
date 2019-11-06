@@ -1,38 +1,35 @@
 package yb.ecp.fast.user.infra.datasource;
 
 import com.alibaba.druid.pool.DruidDataSourceFactory;
-import java.util.Properties;
-import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import yb.ecp.fast.user.dao.entity.AuthDO;
-import yb.ecp.fast.user.dao.entity.TemplateDO;
+
+import javax.sql.DataSource;
+import java.util.Properties;
+
 
 @Configuration
 @ServletComponentScan
 public class DatasourceConfig {
-
-   @Value("${spring.datasource.url}")
-   private String d;
    @Value("${spring.datasource.driverClassName}")
-   private String L;
+   private String driverClassName;
+   @Value("${spring.datasource.url}")
+   private String url;
    @Value("${spring.datasource.username}")
-   private String e;
+   private String username;
    @Value("${spring.datasource.password}")
-   private String ALLATORIxDEMO;
-
+   private String password;
 
    @Bean
    public DataSource getDataSource() throws Exception {
-      Properties var1;
-      (var1 = new Properties()).put(AuthDO.ALLATORIxDEMO("f#k\'g#A=c\"qc<g"), a.L);
-      Object var10002 = var1.put(TemplateDO.ALLATORIxDEMO("CLZ"), a.d);
-      var1.put(AuthDO.ALLATORIxDEMO("$q4p?c<g"), a.e);
-      var1.put(TemplateDO.ALLATORIxDEMO("NWMEIYLR"), a.ALLATORIxDEMO);
-      var1.put(AuthDO.ALLATORIxDEMO("d8n%g#q"), TemplateDO.ALLATORIxDEMO("MB_B"));
-      return DruidDataSourceFactory.createDataSource((Properties)var10002);
+      Properties props = new Properties();
+      props.put("driverClassName", this.driverClassName);
+      props.put("url", this.url);
+      props.put("username", this.username);
+      props.put("password", this.password);
+      props.put("filters", "stat");
+      return DruidDataSourceFactory.createDataSource(props);
    }
-
 }

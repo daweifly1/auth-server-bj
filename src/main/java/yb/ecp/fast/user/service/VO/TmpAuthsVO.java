@@ -9,18 +9,18 @@ public class TmpAuthsVO {
 
 
    public List getAuthIds() {
-      return a.ALLATORIxDEMO;
+      return ALLATORIxDEMO;
    }
 
    public void setTemplateId(String a1) {
-      a.e = a1;
+      e = a1;
    }
 
    public void setAuthIds(List a1) {
-      a.ALLATORIxDEMO = a1;
+      ALLATORIxDEMO = a1;
    }
 
    public String getTemplateId() {
-      return a.e;
+      return e;
    }
 }

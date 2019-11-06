@@ -11,34 +11,34 @@ public class AccountVO {
 
 
    public Integer getStatus() {
-      return a.ALLATORIxDEMO;
+      return ALLATORIxDEMO;
    }
 
    public String getLoginName() {
-      return a.d;
+      return d;
    }
 
    public Date getLastLoginTime() {
-      return a.e;
+      return e;
    }
 
    public void setLastLoginTime(Date a1) {
-      a.e = a1;
+      e = a1;
    }
 
    public String getUserId() {
-      return a.L;
+      return L;
    }
 
    public void setUserId(String a1) {
-      a.L = a1;
+      L = a1;
    }
 
    public void setStatus(Integer a1) {
-      a.ALLATORIxDEMO = a1;
+      ALLATORIxDEMO = a1;
    }
 
    public void setLoginName(String a1) {
-      a.d = a1;
+      d = a1;
    }
 }

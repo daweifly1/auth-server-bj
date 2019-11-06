@@ -9,18 +9,18 @@ public class AccountPwdVO extends AccountVO {
 
 
    public Integer getType() {
-      return a.e;
+      return e;
    }
 
    public String getPassword() {
-      return a.ALLATORIxDEMO;
+      return ALLATORIxDEMO;
    }
 
    public void setType(Integer a1) {
-      a.e = a1;
+      e = a1;
    }
 
    public void setPassword(String a1) {
-      a.ALLATORIxDEMO = a1;
+      ALLATORIxDEMO = a1;
    }
 }

@@ -9,27 +9,27 @@ public class RoleMenuDO {
 
 
    public String getRoleId() {
-      return a.ALLATORIxDEMO;
+      return ALLATORIxDEMO;
    }
 
    public void setRoleId(String a1) {
-      a.ALLATORIxDEMO = a1;
+      ALLATORIxDEMO = a1;
    }
 
    public void setChannel(Integer a1) {
-      a.L = a1;
+      L = a1;
    }
 
    public Integer getChannel() {
-      return a.L;
+      return L;
    }
 
    public Integer getMenuId() {
-      return a.e;
+      return e;
    }
 
    public void setMenuId(Integer a1) {
-      a.e = a1;
+      e = a1;
    }
 
 }

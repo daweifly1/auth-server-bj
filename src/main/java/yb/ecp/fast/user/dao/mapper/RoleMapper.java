@@ -13,19 +13,19 @@ public interface RoleMapper {
 
    int removeUserRole(@Param("roleId") String var1, @Param("userId") String var2);
 
-   int addUserRoleRelation(@Param("roleId") String var1, @Param("userId") String var2, @Param("userFlag") Integer var3);
+   int addUserRoleRelation(@Param("roleId") String roleId, @Param("userId") String userId, @Param("userFlag") Integer userFlag);
 
    int updateByPrimaryKey(RoleDO var1);
 
-   List selectAll(@Param("channel") int var1, @Param("type") Integer var2, @Param("workspaceId") String var3);
+   List selectAll(@Param("channel") int channel, @Param("type") Integer type, @Param("workspaceId") String workspaceId);
 
-   int insertRoleUsers(UserRoles var1);
+//   int insertRoleUsers(UserRoles var1);
 
    Long countUserByRoleId(@Param("roleId") String var1);
 
    int insert(RoleDO var1);
 
-   List selectByWorkspaceId(@Param("workspaceId") String var1);
+   List<String> selectByWorkspaceId(@Param("workspaceId") String var1);
 
    int deleteRoleUsers(String var1);
 
@@ -33,17 +33,17 @@ public interface RoleMapper {
 
    int removeRoleByUser(String var1);
 
-   int checkUserRole(@Param("roleId") String var1, @Param("userId") String var2);
+   int checkUserRole(@Param("roleId") String roleId, @Param("userId") String userId);
 
-   List queryAuthIdsByRoleId(String var1);
+   List<Integer> queryAuthIdsByRoleId(String var1);
 
-   List selectUserIdByRoleId(@Param("roleId") String var1);
+   List<String> selectUserIdByRoleId(@Param("roleId") String roleId);
 
    RoleDO selectByPrimaryKey(String var1);
 
-   Long countByName(@Param("roleId") String var1, @Param("name") String var2, @Param("spaceId") String var3, @Param("deptId") String var4);
+   Long countByName(@Param("roleId") String roleId, @Param("name") String name, @Param("spaceId") String spaceId, @Param("deptId") String deptId);
 
-   List selectRoleIdsByUserId(String var1);
+   List<String> selectRoleIdsByUserId(String var1);
 
    int addUserRole(@Param("roleId") String var1, @Param("userId") String var2, @Param("userFlag") Integer var3);
 

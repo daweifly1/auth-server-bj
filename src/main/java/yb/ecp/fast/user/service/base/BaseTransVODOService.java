@@ -1,73 +1,60 @@
 package yb.ecp.fast.user.service.base;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 import org.springframework.beans.BeanUtils;
 
-public class BaseTransVODOService {
+import java.util.ArrayList;
+import java.util.List;
 
-   private Class e;
-   private Class ALLATORIxDEMO;
+public class BaseTransVODOService<V, D> {
+   private Class<D> dClass;
+   private Class<V> vClass;
 
+   protected BaseTransVODOService(Class<V> vClass, Class<D> dClass) {
+      this.vClass = vClass;
+      this.dClass = dClass;
+   }
 
-   protected List getVOList(List a1) {
-      ArrayList var2 = new ArrayList();
-      if(a1 == null) {
-         return var2;
-      } else {
-         Iterator a2;
-         Iterator var10000 = a2 = a1.iterator();
+   protected D getDO(V dataVO) {
+      if (dataVO == null) {
+         return null;
+      }
+      D dataDO;
+      try {
+         dataDO = this.dClass.newInstance();
+      } catch (Exception e) {
+         return null;
+      }
+      BeanUtils.copyProperties(dataVO, dataDO);
+      return dataDO;
+   }
 
-         while(var10000.hasNext()) {
-            Object var3;
-            if((var3 = a2.next()) == null) {
-               var10000 = a2;
-            } else {
-               var3 = a.getVO(var3);
-               var10000 = a2;
-               var2.add(var3);
-            }
+   protected V getVO(D dataDO) {
+      if (dataDO == null) {
+         return null;
+      }
+      V dataVO;
+      try {
+         dataVO = this.vClass.newInstance();
+      } catch (Exception e) {
+
+         return null;
+      }
+
+      BeanUtils.copyProperties(dataDO, dataVO);
+      return dataVO;
+   }
+
+   protected List<V> getVOList(List<D> doList) {
+      List<V> voList = new ArrayList();
+      if (doList == null) {
+         return voList;
+      }
+      for (D dataDO : doList) {
+         if (dataDO != null) {
+            V viewVo = getVO(dataDO);
+            voList.add(viewVo);
          }
-
-         return var2;
       }
-   }
-
-   protected BaseTransVODOService(Class a1, Class a2) {
-      a.ALLATORIxDEMO = a1;
-      a.e = a2;
-   }
-
-   protected Object getDO(Object a1) {
-      Object var2;
-      try {
-         var2 = a.e.newInstance();
-      } catch (Exception var4) {
-         return null;
-      }
-
-      if(a1 == null) {
-         return null;
-      } else {
-         BeanUtils.copyProperties(a1, var2);
-         return var2;
-      }
-   }
-
-   protected Object getVO(Object a1) {
-      Object var2;
-      try {
-         var2 = a.ALLATORIxDEMO.newInstance();
-      } catch (Exception var4) {
-         return null;
-      }
-
-      if(a1 == null) {
-         return null;
-      } else {
-         BeanUtils.copyProperties(a1, var2);
-         return var2;
-      }
+      return voList;
    }
 }

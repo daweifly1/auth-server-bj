@@ -1,15 +1,8 @@
 package yb.ecp.fast.user.web;
 
 import io.swagger.annotations.ApiOperation;
-import java.util.ArrayList;
-import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import yb.ecp.fast.feign.FastGenClient;
 import yb.ecp.fast.infra.annotation.FastMappingInfo;
 import yb.ecp.fast.infra.infra.ActionResult;
@@ -22,14 +15,17 @@ import yb.ecp.fast.user.service.VO.TemplateVO;
 import yb.ecp.fast.user.service.VO.TmpAuthsVO;
 import yb.ecp.fast.user.service.VO.TmpMenusVO;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @RestController
 @RequestMapping({"/template"})
 public class TemplateController extends BasicController {
 
    @Autowired
-   TemplateService e;
+   TemplateService templateService;
    @Autowired
-   private FastGenClient ALLATORIxDEMO;
+   private FastGenClient fastGenClient;
 
 
    @RequestMapping(
@@ -41,7 +37,7 @@ public class TemplateController extends BasicController {
       needLogin = true
    )
    public ActionResult queryAuthByTemplate(@RequestParam("tempId") String tempId) {
-      return this.actionResult(this.e.queryAuthByTemplate(tempId));
+      return this.actionResult(this.templateService.queryAuthByTemplate(tempId));
    }
 
    @RequestMapping(
@@ -53,7 +49,7 @@ public class TemplateController extends BasicController {
       code = 1514L
    )
    public ActionResult removeMenus(@RequestBody TmpMenusVO tmpMenusVO) {
-      return this.actionResult(this.e.removeMenus(tmpMenusVO));
+      return this.actionResult(this.templateService.removeMenus(tmpMenusVO));
    }
 
    @RequestMapping(
@@ -62,7 +58,7 @@ public class TemplateController extends BasicController {
    )
    @ApiOperation("查询所有权限模板")
    public ActionResult listTmp() {
-      return this.actionResult(this.e.queryList());
+      return this.actionResult(this.templateService.queryList());
    }
 
    @RequestMapping(
@@ -74,7 +70,7 @@ public class TemplateController extends BasicController {
       code = 1513L
    )
    public ActionResult removeMenuByTemplate(@RequestParam("tempId") String tempId) {
-      return this.actionResult(this.e.removeMenuByTemplate(tempId));
+      return this.actionResult(this.templateService.removeMenuByTemplate(tempId));
    }
 
    @RequestMapping(
@@ -86,7 +82,7 @@ public class TemplateController extends BasicController {
       code = 1515L
    )
    public ActionResult removeAuths(@RequestBody TmpAuthsVO tmpAuthsVO) {
-      return this.actionResult(this.e.removeAuths(tmpAuthsVO));
+      return this.actionResult(this.templateService.removeAuths(tmpAuthsVO));
    }
 
    @RequestMapping(
@@ -95,7 +91,7 @@ public class TemplateController extends BasicController {
    )
    @ApiOperation("查询模板下的MENU集合")
    public ActionResult queryMenuByTemplate(@RequestParam("tempId") String tempId) {
-      return this.actionResult(this.e.queryMenuByTemplate(tempId));
+      return this.actionResult(this.templateService.queryMenuByTemplate(tempId));
    }
 
    @RequestMapping(
@@ -107,7 +103,7 @@ public class TemplateController extends BasicController {
       code = 1506L
    )
    public ActionResult configTmpAuth(@RequestBody TmpAuthsVO tmpAuthsVO) {
-      return this.actionResult(this.e.configTmpAuth(tmpAuthsVO));
+      return this.actionResult(this.templateService.configTmpAuth(tmpAuthsVO));
    }
 
    @RequestMapping(
@@ -119,7 +115,7 @@ public class TemplateController extends BasicController {
       code = 1504L
    )
    public ActionResult update(@RequestBody TemplateVO templateVO) {
-      return this.actionResult(this.e.update(templateVO));
+      return this.actionResult(this.templateService.update(templateVO));
    }
 
    @RequestMapping(
@@ -131,7 +127,7 @@ public class TemplateController extends BasicController {
       code = 1508L
    )
    public ActionResult configTemplate(@RequestBody TemplateConfigVO templateConfigVO, @RequestHeader("x-from-site") String site) {
-      return this.actionResult(this.e.configTemplate(templateConfigVO));
+      return this.actionResult(this.templateService.configTemplate(templateConfigVO));
    }
 
    @RequestMapping(
@@ -140,7 +136,7 @@ public class TemplateController extends BasicController {
    )
    @ApiOperation("通过ID查看模板信息")
    public ActionResult itemById(@RequestParam("id") String id) {
-      return this.actionResult(this.e.selectById(id));
+      return this.actionResult(this.templateService.selectById(id));
    }
 
    @RequestMapping(
@@ -152,7 +148,7 @@ public class TemplateController extends BasicController {
       code = 1507L
    )
    public ActionResult configTmpMenu(@RequestBody TmpMenusVO tmpMenusVO) {
-      return this.actionResult(this.e.configTmpMenu(tmpMenusVO));
+      return this.actionResult(this.templateService.configTmpMenu(tmpMenusVO));
    }
 
    @RequestMapping(
@@ -161,7 +157,7 @@ public class TemplateController extends BasicController {
    )
    @ApiOperation("删除模板下的所有权限")
    public ActionResult removeAuthByTemplate(@RequestParam("tempId") String tempId) {
-      return this.actionResult(this.e.removeAuthByTemplate(tempId));
+      return this.actionResult(this.templateService.removeAuthByTemplate(tempId));
    }
 
    @RequestMapping(
@@ -170,7 +166,7 @@ public class TemplateController extends BasicController {
    )
    @ApiOperation("查询模板的权限与MENU信息")
    public ActionResult queryTemplateConfig(@RequestParam("tempId") String tempId) {
-      return this.actionResult(this.e.queryTemplateConfigById(tempId));
+      return this.actionResult(this.templateService.queryTemplateConfigById(tempId));
    }
 
    @RequestMapping(
@@ -182,8 +178,8 @@ public class TemplateController extends BasicController {
       code = 1503L
    )
    public ActionResult remove(@RequestBody List ids) {
-      Ref a = new Ref(new ArrayList());
-      return this.actionResult(this.e.removeByIds(ids, a), a.get());
+      Ref ref = new Ref(new ArrayList());
+      return this.actionResult(this.templateService.removeByIds(ids, ref), ref.get());
    }
 
    @RequestMapping(
@@ -195,12 +191,12 @@ public class TemplateController extends BasicController {
       code = 1502L
    )
    public ActionResult insert(@RequestBody TemplateVO templateVO) {
-      ActionResult a;
-      if((a = this.ALLATORIxDEMO.textGuid()).getCode() != ErrorCode.Success.getCode()) {
-         return a;
+      ActionResult actionResult;
+      if ((actionResult = this.fastGenClient.textGuid()).getCode() != ErrorCode.Success.getCode()) {
+         return actionResult;
       } else {
-         templateVO.setId((String)a.getValue());
-         return this.actionResult(this.e.insert(templateVO));
+         templateVO.setId((String)actionResult.getValue());
+         return this.actionResult(this.templateService.insert(templateVO));
       }
    }
 }

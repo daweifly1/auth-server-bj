@@ -18,9 +18,9 @@ import yb.ecp.fast.user.service.ScepterService;
 public class MenuController extends BasicController {
 
    @Autowired
-   MenuService e;
+   MenuService menuService;
    @Autowired
-   ScepterService ALLATORIxDEMO;
+   ScepterService scepterService;
 
 
    @RequestMapping(
@@ -31,7 +31,7 @@ public class MenuController extends BasicController {
       needLogin = false
    )
    public ActionResult listAuthByMenu(@RequestHeader("x-user-id") String userId) {
-      return this.actionResult(this.e.getAuthListByMenu(userId));
+      return this.actionResult(this.menuService.getAuthListByMenu(userId));
    }
 
    @RequestMapping(
@@ -43,7 +43,7 @@ public class MenuController extends BasicController {
    )
    @ApiOperation("查询权限模板配置页面所需数据")
    public ActionResult listMenuBySite(@RequestParam("site") Integer site) {
-      return this.actionResult(this.e.listMenuBySite(site));
+      return this.actionResult(this.menuService.listMenuBySite(site));
    }
 
    @RequestMapping(
@@ -54,7 +54,7 @@ public class MenuController extends BasicController {
       needLogin = true
    )
    public ActionResult listAuthByUser(@RequestHeader("x-user-id") String userId) {
-      return this.actionResult(this.e.listAuthByUser(userId));
+      return this.actionResult(this.menuService.listAuthByUser(userId));
    }
 
    @RequestMapping(
@@ -66,7 +66,7 @@ public class MenuController extends BasicController {
    )
    @ApiOperation("查询按钮集合（树形结构）")
    public ActionResult authorizedList(@RequestHeader("x-user-id") String userId) {
-      return this.actionResult(this.ALLATORIxDEMO.getShownMenuByUser(userId));
+      return this.actionResult(this.scepterService.getShownMenuByUser(userId));
    }
 
    @RequestMapping(
@@ -77,7 +77,7 @@ public class MenuController extends BasicController {
       needLogin = false
    )
    public ActionResult shownList(@RequestHeader("x-user-id") String userId) {
-      return this.actionResult(this.e.getShownMenuTree(userId));
+      return this.actionResult(this.menuService.getShownMenuTree(userId));
    }
 
    @RequestMapping(
@@ -89,6 +89,6 @@ public class MenuController extends BasicController {
    )
    @ApiOperation("查询按钮集合")
    public ActionResult listAuthorized(@RequestHeader("x-user-id") String userId, @RequestHeader("x-from-site") Integer site) {
-      return this.actionResult(this.ALLATORIxDEMO.listShownMenuByUser(userId, site));
+      return this.actionResult(this.scepterService.listShownMenuByUser(userId, site));
    }
 }

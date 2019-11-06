@@ -24,11 +24,11 @@ import yb.ecp.fast.user.service.VO.DepartmentVO;
 public class DepartmentController extends BasicController {
 
    @Autowired
-   private UserContextService L;
+   private UserContextService userContextService;
    @Autowired
-   private FastGenClient e;
+   private FastGenClient fastGenClient;
    @Autowired
-   private DepartmentService ALLATORIxDEMO;
+   private DepartmentService departmentService;
 
 
    @RequestMapping(
@@ -40,11 +40,11 @@ public class DepartmentController extends BasicController {
    )
    public ActionResult delete(@RequestBody DepartmentVO departmentVO, @RequestHeader("x-user-id") String userId) {
       String a;
-      if(StringUtil.isNullOrEmpty(a = this.L.getWorkspaceId(userId))) {
+      if(StringUtil.isNullOrEmpty(a = this.userContextService.getWorkspaceId(userId))) {
          return this.actionResult(ErrorCode.NeedLogin);
       } else {
          Ref a1 = new Ref(new ArrayList());
-         return this.actionResult(this.ALLATORIxDEMO.removeByCode(departmentVO.getId(), a, a1), a1.get());
+         return this.actionResult(this.departmentService.removeByCode(departmentVO.getId(), a, a1), a1.get());
       }
    }
 
@@ -56,7 +56,7 @@ public class DepartmentController extends BasicController {
       code = 1104L
    )
    public ActionResult update(@RequestBody DepartmentVO departmentVO) {
-      return this.actionResult(this.ALLATORIxDEMO.update(departmentVO));
+      return this.actionResult(this.departmentService.update(departmentVO));
    }
 
    @RequestMapping(
@@ -64,7 +64,7 @@ public class DepartmentController extends BasicController {
       method = {RequestMethod.GET}
    )
    public ActionResult item(@RequestParam("id") String id) {
-      return this.actionResult(this.ALLATORIxDEMO.item(id));
+      return this.actionResult(this.departmentService.item(id));
    }
 
    @RequestMapping(
@@ -72,7 +72,7 @@ public class DepartmentController extends BasicController {
       method = {RequestMethod.GET}
    )
    public ActionResult list(@RequestParam("id") String id, @RequestHeader("x-user-id") String userId) {
-      return this.actionResult(this.ALLATORIxDEMO.listDept(id, userId));
+      return this.actionResult(this.departmentService.listDept(id, userId));
    }
 
    @RequestMapping(
@@ -84,15 +84,15 @@ public class DepartmentController extends BasicController {
    )
    public ActionResult insert(@RequestBody DepartmentVO departmentVO, @RequestHeader("x-user-id") String userId) {
       String a;
-      if(StringUtil.isNullOrEmpty(a = this.L.getWorkspaceId(userId))) {
+      if(StringUtil.isNullOrEmpty(a = this.userContextService.getWorkspaceId(userId))) {
          return this.actionResult(ErrorCode.NeedLogin);
       } else {
          ActionResult a1;
-         if((a1 = this.e.textGuid()).getCode() != ErrorCode.Success.getCode()) {
+         if((a1 = this.fastGenClient.textGuid()).getCode() != ErrorCode.Success.getCode()) {
             return a1;
          } else {
             departmentVO.setId((String)a1.getValue());
-            ErrorCode a2 = this.ALLATORIxDEMO.insert(departmentVO, a);
+            ErrorCode a2 = this.departmentService.insert(departmentVO, a);
             return ErrorCode.Success == a2?this.actionResult(a2, a1.getValue()):this.actionResult(a2);
          }
       }

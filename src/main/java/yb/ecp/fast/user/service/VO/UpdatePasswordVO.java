@@ -8,18 +8,18 @@ public class UpdatePasswordVO {
 
 
    public void setOldPassword(String a1) {
-      a.e = a1;
+      e = a1;
    }
 
    public String getNewPassword() {
-      return a.ALLATORIxDEMO;
+      return ALLATORIxDEMO;
    }
 
    public String getOldPassword() {
-      return a.e;
+      return e;
    }
 
    public void setNewPassword(String a1) {
-      a.ALLATORIxDEMO = a1;
+      ALLATORIxDEMO = a1;
    }
 }

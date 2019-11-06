@@ -9,26 +9,26 @@ public class PasswordVO {
 
 
    public Integer getType() {
-      return a.L;
+      return L;
    }
 
    public void setType(Integer a1) {
-      a.L = a1;
+      L = a1;
    }
 
    public void setPassword(String a1) {
-      a.ALLATORIxDEMO = a1;
+      ALLATORIxDEMO = a1;
    }
 
    public void setUserId(String a1) {
-      a.e = a1;
+      e = a1;
    }
 
    public String getPassword() {
-      return a.ALLATORIxDEMO;
+      return ALLATORIxDEMO;
    }
 
    public String getUserId() {
-      return a.e;
+      return e;
    }
 }

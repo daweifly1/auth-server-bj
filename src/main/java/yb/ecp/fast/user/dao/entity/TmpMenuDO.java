@@ -8,18 +8,18 @@ public class TmpMenuDO {
 
 
    public void setTmpId(String a1) {
-      a.ALLATORIxDEMO = a1;
+      ALLATORIxDEMO = a1;
    }
 
    public Integer getMenuId() {
-      return a.e;
+      return e;
    }
 
    public String getTmpId() {
-      return a.ALLATORIxDEMO;
+      return ALLATORIxDEMO;
    }
 
    public void setMenuId(Integer a1) {
-      a.e = a1;
+      e = a1;
    }
 }
