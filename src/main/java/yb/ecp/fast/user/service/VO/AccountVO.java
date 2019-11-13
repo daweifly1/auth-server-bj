@@ -5,7 +5,7 @@ import java.util.Date;
 public class AccountVO {
 
    private String d;
-   private String L;
+   private String userId;
    private Date e;
    private Integer ALLATORIxDEMO = Integer.valueOf(0);
 
@@ -27,11 +27,11 @@ public class AccountVO {
    }
 
    public String getUserId() {
-      return L;
+      return userId;
    }
 
    public void setUserId(String a1) {
-      L = a1;
+      userId = a1;
    }
 
    public void setStatus(Integer a1) {

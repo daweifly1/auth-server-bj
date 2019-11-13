@@ -4,7 +4,7 @@ import java.sql.Date;
 
 public class ProfileDO {
 
-   private String M;
+   private String userId;
    private String k;
    private String H;
    private Date j;
@@ -38,7 +38,7 @@ public class ProfileDO {
    }
 
    public void setUserId(String a1) {
-      M = a1;
+      userId = a1;
    }
 
    public String getSpaceId() {
@@ -46,7 +46,7 @@ public class ProfileDO {
    }
 
    public String getUserId() {
-      return M;
+      return userId;
    }
 
    public void setSex(Integer a1) {
